@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogIn, UserPlus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +34,8 @@ export default function Navbar() {
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm text-surface-200 hover:text-primary-400 transition-colors">{l.label}</a>
           ))}
-          <a href="#cta" className="bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Get Started</a>
+          <Link to="/login" className="text-sm text-surface-200 hover:text-primary-400 transition-colors flex items-center gap-1.5"><LogIn size={14} />Login</Link>
+          <Link to="/signup" className="bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors flex items-center gap-1.5"><UserPlus size={14} />Sign Up</Link>
         </div>
 
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-surface-200 p-2" aria-label="Toggle menu">
@@ -46,7 +48,8 @@ export default function Navbar() {
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} className="block py-2 text-surface-200 hover:text-primary-400 transition-colors text-sm">{l.label}</a>
           ))}
-          <a href="#cta" onClick={() => setMenuOpen(false)} className="mt-2 block text-center bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Get Started</a>
+          <Link to="/login" onClick={() => setMenuOpen(false)} className="block py-2 text-surface-200 hover:text-primary-400 transition-colors text-sm flex items-center gap-1.5"><LogIn size={14} />Login</Link>
+          <Link to="/signup" onClick={() => setMenuOpen(false)} className="mt-2 block text-center bg-primary-600 hover:bg-primary-500 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Sign Up</Link>
         </div>
       )}
     </nav>
